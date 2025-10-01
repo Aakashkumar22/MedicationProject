@@ -74,4 +74,4 @@ echo "<pre style='background: #f4f4f4; padding: 15px; border-radius: 5px;'>";
 // Output the corrected JSON
 echo $medication->toJson();
 
-echo "</pre>";
+
