@@ -2,7 +2,11 @@
 
 <?php
 // Include all required files
-require_once 'MedicationOutput.php';
+// Add this line
+require_once 'AssociatedDrug.php';
+require_once 'ClassObject.php';
+require_once 'MedicationClass.php';
+require_once 'Medications.php';
 require_once 'MedicationRepository.php';
 
 echo "=== Medication JSON Generator ===\n\n";
@@ -30,9 +34,11 @@ $medClass->addClassName("className2", [$classObj2]);
 // Add the single medication class to medication
 $medication->addMedicationClass($medClass);
 
+
 // Output the JSON without database
 echo "=== JSON Output (Without Database) ===\n";
-echo $medication->toJson();
+echo "<pre>" . $medication->toJson() . "</pre>";
+
 
 // Optional: Test with database
 echo "\n\n=== Database Test ===\n";
@@ -50,7 +56,8 @@ try {
     $retrievedMedication = $repository->getMedicationById($medicationId);
     echo "✓ Medication retrieved from database\n";
     echo "=== JSON Output (From Database) ===\n";
-    echo $retrievedMedication->toJson();
+    echo "<pre>" . $retrievedMedication->toJson() . "</pre>";
+
 
 } catch (PDOException $e) {
     echo "⚠ Database not available: " . $e->getMessage() . "\n";
