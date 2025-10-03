@@ -53,29 +53,29 @@ class MedicationClass {
         return array_key_exists($className, $this->classNames);
     }
 
-    // SOLUTION: Get objects by category
+    //  Get objects by category
     public function getClassObjects(string $className): array {
         return $this->classNames[$className] ?? [];
     }
 
-    // SOLUTION: Count total objects across all categories
+    //  Count total objects across all categories
     public function countAllObjects(): int {
         return array_reduce($this->classNames, function($carry, $objects) {
             return $carry + count($objects);
         }, 0);
     }
 
-    // SOLUTION: Count categories
+    //  Count categories
     public function countCategories(): int {
         return count($this->classNames);
     }
 
-    // SOLUTION: Get all category names
+    //  Get all category names
     public function getCategoryNames(): array {
         return array_keys($this->classNames);
     }
 
-    // SOLUTION: OPTIMIZED toArray with error handling
+    // OPTIMIZED toArray with error handling
 
 
 

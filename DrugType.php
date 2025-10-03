@@ -1,7 +1,7 @@
 <?php
 
 
-// SOLUTION: Enum-like pattern for predefined drug types
+//  Enum-like pattern for predefined drug types
 final class DrugType
 {
     const PAIN_RELIEF = 'pain_relief';

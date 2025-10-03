@@ -34,7 +34,7 @@ class AssociatedDrug
     private $name;
     private $strength;
 
-    // SOLUTION: Enhanced constructor with validation
+    // Enhanced constructor with validation
     public function __construct(string $name, string $strength, string $dose = "", $id = null)
     {
 //        $this->validateInputs($name, $strength, $dose, $id);
@@ -45,7 +45,7 @@ class AssociatedDrug
         $this->dose = $dose;
     }
 
-    // SOLUTION: Comprehensive input validation
+    // Comprehensive input validation
     private function validateInputs(string $name, string $strength, string $dose, $id): void
     {
         // Name validation
@@ -99,7 +99,7 @@ class AssociatedDrug
         return $dose;
     }
 
-    // SOLUTION: Enhanced getters with type hints
+    //  Enhanced getters with type hints
     public function getId(): ?int
     {
         return $this->id;
@@ -120,7 +120,7 @@ class AssociatedDrug
         return $this->strength;
     }
 
-    // SOLUTION: Setters with validation for mutable operations
+    //Setters with validation for mutable operations
     public function updateDose(string $newDose): void
     {
         $validatedDose = $this->validateDose($newDose);
@@ -133,7 +133,7 @@ class AssociatedDrug
         $this->strength = $validatedStrength;
     }
 
-    // SOLUTION: Business logic methods
+    //  Business logic methods
     public function isHighStrength(): bool
     {
         $numericStrength = floatval(preg_replace('/[^\d.]/', '', $this->strength));
@@ -160,7 +160,7 @@ class AssociatedDrug
 
 
 
-    // SOLUTION: Additional serialization methods
+    //  Additional serialization methods
     public function toJson(): string
     {
         return json_encode($this->toArray(), JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
@@ -177,7 +177,7 @@ class AssociatedDrug
         ];
     }
 
-    // SOLUTION: Equality comparison methods
+    //  Equality comparison methods
     public function equals(self $otherDrug): bool
     {
         if ($this->id !== null && $otherDrug->getId() !== null) {
@@ -194,7 +194,7 @@ class AssociatedDrug
             $this->strength !== $otherDrug->getStrength();
     }
 
-    // SOLUTION: Static factory methods for common patterns
+    //  Static factory methods for common patterns
 
 
     public static function fromArray(array $data): self

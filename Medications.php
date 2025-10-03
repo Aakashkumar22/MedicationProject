@@ -28,7 +28,7 @@ class Medication {
         ];
     }
 
-    // ADD THESE MISSING METHODS:
+
     public function isValid(): bool {
         return empty($this->validate());
     }

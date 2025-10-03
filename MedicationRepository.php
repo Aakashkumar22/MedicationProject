@@ -564,7 +564,7 @@ class MedicationRepository
         $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
-    // SOLUTION: Input validation
+    //  Input validation
     private function validateMedication(Medication $medication): void
     {
         if (!$medication->isValid()) {
@@ -579,7 +579,7 @@ class MedicationRepository
         }
     }
 
-    // SOLUTION: Optimized save with batch operations
+    // Optimized save with batch operations
     public function saveMedication(Medication $medication): int {
         $this->validateMedication($medication);
 
@@ -738,7 +738,7 @@ class MedicationRepository
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($values);
     }
-    // SOLUTION: Optimized get by ID with caching
+    // Optimized get by ID with caching
     public function getMedicationById(int $id): ?Medication {
         $this->validateId($id);
 
@@ -783,7 +783,7 @@ class MedicationRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // SOLUTION: Fixed and optimized hierarchy rebuilding
+    // Fixed and optimized hierarchy rebuilding
     private function buildMedicationFromResults(array $results): Medication {
         $medication = new Medication($results[0]['medication_id']);
         $classesMap = []; // class_id => MedicationClass
@@ -834,7 +834,7 @@ class MedicationRepository
 
         return $medication;
     }
-    // SOLUTION: Single query for all medications
+    //  Single query for all medications
     public function getAllMedications(): array {
         $query = "
             SELECT 
@@ -890,7 +890,7 @@ class MedicationRepository
         return array_values($medicationsMap);
     }
 
-    // SOLUTION: Pagination support
+    // Pagination support
     public function getMedicationsPaginated(int $page = 1, int $perPage = 10): array {
         $offset = ($page - 1) * $perPage;
 
@@ -911,7 +911,7 @@ class MedicationRepository
         return (int)$stmt->fetchColumn();
     }
 
-    // SOLUTION: Proper deletion with constraints
+    //  Proper deletion with constraints
     public function deleteMedication(int $id): bool {
         $this->validateId($id);
 
@@ -946,7 +946,7 @@ class MedicationRepository
         }
     }
 
-    // SOLUTION: Update operation
+    // Update operation
     public function updateMedication(Medication $medication): bool {
         $this->validateMedication($medication);
 
@@ -970,6 +970,6 @@ class MedicationRepository
     }
 }
 
-// SOLUTION: Custom exception
+//  Custom exception
 class RepositoryException extends Exception {}
 

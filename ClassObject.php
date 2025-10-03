@@ -102,7 +102,7 @@ class ClassObject {
         return spl_object_hash($drug);
     }
 
-    // SOLUTION: Enhanced management methods
+    // Enhanced management methods
     public function removeDrug(string $drugType, $drugToRemove): bool {
         if (!isset($this->associatedDrugs[$drugType])) {
             return false;
