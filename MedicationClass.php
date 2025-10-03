@@ -19,11 +19,19 @@ class MedicationClass {
         if (empty($classObjects)) {
             throw new InvalidArgumentException("Class objects array cannot be empty");
         }
+//        if (empty($classObjects)) {
+//            throw new InvalidArgumentException("Class objects array cannot be empty");
+//        }
+
+//        if (array_key_exists($className, $this->classNames)) {
+//            throw new InvalidArgumentException("Class category '{$className}' already exists");
+//        }
 
         $this->classNames[$className] = $classObjects;
     }
 
     public function addClassCategories(array $categories): void {
+
         foreach ($categories as $className => $classObjects) {
             $this->addClassName($className, $classObjects);
         }
@@ -35,12 +43,11 @@ class MedicationClass {
         $this->classNames[$className] = $classObjects;
     }
 
-    public function removeClassCategory(string $className): bool {
-        if (array_key_exists($className, $this->classNames)) {
-            unset($this->classNames[$className]);
-            return true;
+    public function removeClassCategory(string $className): void {
+        if (!array_key_exists($className, $this->classNames)) {
+            throw new InvalidArgumentException("Class category '{$className}' does not exist");
         }
-        return false;
+        unset($this->classNames[$className]);
     }
     public function hasClassCategory(string $className): bool {
         return array_key_exists($className, $this->classNames);
