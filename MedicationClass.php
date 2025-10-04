@@ -25,6 +25,18 @@ class MedicationClass {
 
 //        if (array_key_exists($className, $this->classNames)) {
 //            throw new InvalidArgumentException("Class category '{$className}' already exists");
+////        }
+//
+//        if (count($classObjects) > 100) {
+//            throw new InvalidArgumentException("Too many class objects (max 100)");
+//        }
+//
+//        foreach ($classObjects as $index => $object) {
+//            if (!$object instanceof ClassObject) {
+//                throw new InvalidArgumentException(
+//                    "Object at index {$index} is not a ClassObject instance"
+//                );
+//            }
 //        }
 
         $this->classNames[$className] = $classObjects;
